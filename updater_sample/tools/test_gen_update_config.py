@@ -39,9 +39,11 @@ class GenUpdateConfigTest(unittest.TestCase): # pylint: disable=missing-docstrin
                 filename, offset, size = prop['filename'], prop['offset'], prop['size']
                 pkg_file.seek(offset)
                 raw_data = pkg_file.read(size)
-                if filename in ['payload.bin', 'payload_metadata.bin']:
-                    pass
-                elif filename == 'payload_properties.txt':
+                if filename in [
+                    'payload.bin',
+                    'payload_metadata.bin',
+                    'payload_properties.txt',
+                ]:
                     pass
                 elif filename == 'metadata':
                     self.assertEqual(raw_data.decode('ascii'), 'META-INF/COM/ANDROID/METADATA')

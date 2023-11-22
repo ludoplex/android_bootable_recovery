@@ -42,8 +42,8 @@ def GenerateCareMapProtoFromLegacyFormat(lines, fingerprint_enabled):
   # ...
 
   step = 4 if fingerprint_enabled else 2
-  assert len(lines) % step == 0, \
-      "line count must be multiple of {}: {}".format(step, len(lines))
+  assert (len(lines) %
+          step == 0), f"line count must be multiple of {step}: {len(lines)}"
 
   care_map_proto = care_map_pb2.CareMap()
   for index in range(0, len(lines), step):

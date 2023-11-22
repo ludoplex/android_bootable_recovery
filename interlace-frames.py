@@ -35,11 +35,8 @@ except ImportError:
 
 def interlace(output, inputs):
   frames = [Image.open(fn).convert("RGB") for fn in inputs]
-  assert len(frames) > 0, "Must have at least one input frame."
-  sizes = set()
-  for fr in frames:
-    sizes.add(fr.size)
-
+  assert frames, "Must have at least one input frame."
+  sizes = {fr.size for fr in frames}
   assert len(sizes) == 1, "All input images must have the same size."
   w, h = sizes.pop()
   N = len(frames)

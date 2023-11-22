@@ -79,7 +79,7 @@ class GenUpdateConfig(object):
         """Generates config."""
         self._config = {
             '__': '*** Generated using tools/gen_update_config.py ***',
-            'name': self.ab_install_type[0] + ' ' + os.path.basename(self.package)[:-4],
+            'name': f'{self.ab_install_type[0]} {os.path.basename(self.package)[:-4]}',
             'url': self.url,
             'ab_config': self._gen_ab_config(),
             'ab_install_type': self.ab_install_type,
@@ -164,7 +164,7 @@ def main():  # pylint: disable=missing-docstring
         ab_verify_payload_metadata=args.ab_verify_payload_metadata)
     gen.run()
     gen.write(args.out)
-    print('Config is written to ' + args.out)
+    print(f'Config is written to {args.out}')
 
 
 if __name__ == '__main__':
